@@ -16,7 +16,7 @@ def get_score_Deads(deads):
     font = pygame.font.Font(FONT_STYLE, 20)
     text = font.render(f'Deads: {deads}', True, BLACK_COLOR)
     text_rect = text.get_rect()
-    text_rect.center = (600, 35)
+    text_rect.center = (850, 35)
     return text, text_rect
 
 def get_centered_message(message):
