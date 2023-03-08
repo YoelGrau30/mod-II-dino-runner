@@ -3,7 +3,7 @@ from dino_runner.components.dinosaur import Dinosaur
 from dino_runner.components.obstacles.obstacle_manager import ObstacleManager
 
 from dino_runner.utils.constants import BG, ICON, SCREEN_HEIGHT, SCREEN_WIDTH, TITLE, FPS
-from dino_runner.utils.text_utils import get_centered_message, get_score_element
+from dino_runner.utils.text_utils import get_centered_message, get_score_Deads, get_score_element
 
 
 class Game:
@@ -23,6 +23,7 @@ class Game:
         self.player = Dinosaur()
         self.obstacle_manager = ObstacleManager()
         self.points = 0
+        self.deads = 0
 
     def show_score(self):
         self.points += 1
@@ -46,6 +47,10 @@ class Game:
                 pygame.quit()
             if event.type == pygame.KEYDOWN:
                 self.run()
+    
+    def show_deads(self):
+        score, score_rect = get_score_Deads(self.deads)
+        self.screen.blit(score, score_rect)
 
     def run(self):
         # Game loop: events - update - draw
@@ -55,6 +60,7 @@ class Game:
             self.update()
             self.draw()
         self.playing = False
+        self.deads += 1
         self.points = 0
         self.game_speed = self.INITIAL_SPEED
         self.obstacle_manager.remove_obstacles()
@@ -76,6 +82,7 @@ class Game:
         self.player.draw(self.screen)
         self.obstacle_manager.draw(self.screen)
         self.show_score()
+        self.show_deads()
         pygame.display.update()
         pygame.display.flip()
 
