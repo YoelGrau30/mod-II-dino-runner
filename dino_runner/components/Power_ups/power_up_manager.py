@@ -1,5 +1,5 @@
 from dino_runner.components.power_ups.shield import Shield
-from dino_runner.utils.constants import SHIELD
+from dino_runner.utils.constants import SHIELD, SHIELD_TYPE
 import random
 
 
@@ -20,6 +20,8 @@ class PowerUpManager:
         
         for power_up in self.power_ups:
             power_up.update(game.game_speed, self.power_ups)
+            if game.player.dino_rect.colliderect(power_up.rect):
+                game.player.type = SHIELD_TYPE
 
     def draw(self, screen):
         for power_up in self.power_ups:
