@@ -5,7 +5,7 @@ import random
 
 class PowerUpManager:
 
-    POWER_UP_PROBABILITY = 2
+    POWER_UP_PROBABILITY = 1
 
     def __init__(self):
         self.power_ups = []
