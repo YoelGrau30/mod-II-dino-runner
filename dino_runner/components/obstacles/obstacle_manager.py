@@ -26,7 +26,7 @@ class ObstacleManager:
         for obstacle in self.obstacles:
             obstacle.update(game.game_speed, self.obstacles)
             if game.player.type == SHIELD_TYPE:
-                pass
+                print('Shield activated, not damage received')
             elif game.player.dino_rect.colliderect(obstacle.rect):
                 game.player.dead()
                 game.playing = False
