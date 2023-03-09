@@ -59,6 +59,7 @@ class Game:
             self.events()
             self.update()
             self.draw()
+        pygame.time.delay(2000)
         self.playing = False
         self.deads += 1
         self.points = 0
